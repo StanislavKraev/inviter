@@ -1,7 +1,7 @@
-{% extend 'base.html' %}
+{% extends 'base.html' %}
 {% load auth_tags %}
 
 {% block content %}
-{% auth_block user %}
+{% if not skip_auth_block %}{% auth_block %}{% endif %}
 <h1>Inviter</h1>
 {% endblock %}

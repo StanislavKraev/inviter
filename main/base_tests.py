@@ -9,6 +9,10 @@ class BaseTestCase(TestCase):
     TEST_EMAIL = "test@domain.zz"
     TEST_PASSWORD = "testpassword1"
 
+    def __init__(self, *args, **kwargs):
+        super(BaseTestCase, self).__init__(*args, **kwargs)
+        self.current_user = None
+
     def assertAuthorized(self):
         self.assertGreater(User.objects.all().count(), 0)
         user = User.objects.get()
@@ -51,3 +55,12 @@ def authorized(test_func):
         self.current_user = user
         test_func(self)
     return func
+
+
+class TestMailer(object):
+
+    def __init__(self):
+        self.sent_letters = []
+
+    def send(self, template_name, recipients, context=None):
+        self.sent_letters.append((template_name, recipients, context))

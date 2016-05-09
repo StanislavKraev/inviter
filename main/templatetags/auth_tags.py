@@ -6,7 +6,7 @@ from django.contrib.auth.forms import AuthenticationForm
 register = template.Library()
 
 
-@register.inclusion_tag('tags/auth_block.html')
+@register.inclusion_tag('tags/auth_block.html', takes_context=True)
 def auth_block(context):
     current_user = context['user']
     form = AuthenticationForm()

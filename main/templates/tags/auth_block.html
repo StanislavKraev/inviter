@@ -5,6 +5,10 @@
     <input type="submit" value="Выйти" class="href-like-button">
 </form>
 {% else %}
+<form action="{% url 'inviter:login' %}" method="POST">
+    {% csrf_token %}
     {{ auth_form.as_ul }}
+    <input type="submit" value="Войти">
+</form>
 {% endif %}
 </div>

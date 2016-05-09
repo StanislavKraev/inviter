@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="error">
+{% if code_error %}
+    Некорректный инвайт.
+{% else %}
+    Инвайт уже использован.
+{% endif %}
+</div>
+{% endblock %}

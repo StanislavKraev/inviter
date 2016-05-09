@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load auth_tags %}
+
+{% block content %}
+<h1>Inviter</h1>
+<h2>Вход</h2>
+
+<form action="{% url 'inviter:login' %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_ul }}
+    <input type="submit" value="Войти">
+</form>
+
+{% endblock %}
