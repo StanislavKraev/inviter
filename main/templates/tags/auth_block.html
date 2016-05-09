@@ -1,0 +1,10 @@
+<div class="auth-block">
+{% if user.is_authenticated %}
+<form action="{% url 'inviter:logout' %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Выйти" class="href-like-button">
+</form>
+{% else %}
+    {{ auth_form.as_ul }}
+{% endif %}
+</div>

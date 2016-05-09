@@ -1,0 +1,7 @@
+{% extend 'base.html' %}
+{% load auth_tags %}
+
+{% block content %}
+{% auth_block user %}
+<h1>Inviter</h1>
+{% endblock %}
