@@ -99,7 +99,7 @@ body {
 .auth-block {
     float: right;
     clear: right;
-    }
+}
 
 .auth-block form {
     margin: 20px;
@@ -120,4 +120,54 @@ body {
     margin-top:10px;
     margin-left: 196px;
     width: 160px;
+}
+
+.auth-block .note {
+    text-align:right;
+}
+
+.auth-block form input.href-like-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+    width: 100px;
+    margin-left:0;
+    padding-bottom:10px;
+}
+
+a.go-home {
+    font-weight: bold;
+    color: #888;
+    margin: 20px;
+    text-decoration: none;
+    width: 200px;
+}
+
+h1, h2 {
+    margin: 20px;
+    font-size: 20px;
+}
+
+h2 {
+    font-size: 18px;
+}
+
+.errorlist {
+    font-size: 12px;
+    color: red;
+}
+
+form ul {
+    width: 400px;
+    margin-top: 20px;
+}
+
+form.auth-form {
+    margin: 30px;
+}
+
+form ul li {
+    list-style-type: none;
 }

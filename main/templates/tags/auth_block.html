@@ -2,7 +2,7 @@
 {% if user.is_authenticated %}
 <form action="{% url 'inviter:logout' %}" method="POST">
     {% csrf_token %}
-    <input type="submit" value="Выйти" class="href-like-button">
+    <span class="note">Вы вошли как {{user.username}}</span><input type="submit" value="Выйти" class="href-like-button">
 </form>
 {% else %}
 <form action="{% url 'inviter:login' %}" method="POST">

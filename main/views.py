@@ -64,5 +64,8 @@ def use_invite_view(request, code):
     login(request, auth_user)
 
     settings.MAILER.send('registration_successful', [invite.email],
-                         context=dict(password=password))
+                         context=dict(
+                             password=password,
+                             username=invite.email
+                         ))
     return redirect('inviter:index')
