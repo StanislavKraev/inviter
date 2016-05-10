@@ -32,7 +32,7 @@ def signin_view(request):
 def signout_view(request):
     if request.method != 'POST':
         return HttpResponseNotAllowed(('POST',))
-    if request.method == 'POST' and request.user.is_authenticated():
+    if request.user.is_authenticated():
         logout(request)
     return redirect('inviter:index')
 
@@ -47,10 +47,6 @@ def use_invite_view(request, code):
                       'invalid_code.html',
                       context=dict(code_error='invalid'),
                       status=HttpResponseBadRequest.status_code)
-    password = User.objects.make_random_password(
-        length=settings.PASSWORD_LENGTH,
-        allowed_chars=settings.PASSWORD_CHARS
-    )
     try:
         invite = Invite.objects.get(code=code, user=None)
     except Invite.DoesNotExist:
@@ -58,6 +54,10 @@ def use_invite_view(request, code):
                       'invalid_code.html',
                       context=dict(code_error='used'),
                       status=HttpResponseBadRequest.status_code)
+    password = User.objects.make_random_password(
+        length=settings.PASSWORD_LENGTH,
+        allowed_chars=settings.PASSWORD_CHARS
+    )
     invite.user = User.objects.create_user(invite.email, invite.email, password)
     invite.save()
     auth_user = authenticate(username=invite.email, password=password)
